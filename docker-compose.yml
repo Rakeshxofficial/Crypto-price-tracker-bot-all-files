@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  telegram-bot:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - COINGECKO_API_KEY=${COINGECKO_API_KEY}
+      - RANGO_API_KEY=${RANGO_API_KEY}
+      - DATABASE_URL=${DATABASE_URL}
+      - COVALENT_API_KEY=${COVALENT_API_KEY}
+      - TRON_API_KEY=${TRON_API_KEY}
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=cryptobot
+      - POSTGRES_USER=cryptobot
+      - POSTGRES_PASSWORD=cryptobot_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

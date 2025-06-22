@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: telegram-crypto-bot
+    env: python
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: python start_production.py
+    plan: starter
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PYTHONUNBUFFERED
+        value: 1
+      - key: PORT
+        value: 5000
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: COINGECKO_API_KEY
+        sync: false
+      - key: RANGO_API_KEY
+        sync: false
+      - key: COVALENT_API_KEY
+        sync: false
+      - key: TRON_API_KEY
+        sync: false
+
+  - type: pserv
+    name: postgres-db
+    env: postgresql
+    plan: starter
+    disk:
+      name: postgres-data
+      mountPath: /var/lib/postgresql/data
+      sizeGB: 1
+    envVars:
+      - key: POSTGRES_DB
+        value: cryptobot
+      - key: POSTGRES_USER
+        value: cryptobot
+      - key: POSTGRES_PASSWORD
+        generateValue: true

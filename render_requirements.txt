@@ -1,0 +1,15 @@
+python-telegram-bot==21.9
+aiohttp==3.12.6
+openai==1.57.4
+requests==2.32.3
+sqlalchemy==2.0.36
+psycopg2-binary==2.9.10
+matplotlib==3.10.0
+qrcode==8.0
+cryptography==44.0.0
+web3==7.6.0
+solana==0.34.3
+solders==0.23.1
+tronpy==0.5.0
+mnemonic==0.21
+bip-utils==2.9.3

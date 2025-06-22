@@ -1,0 +1,20 @@
+# Git commands to upload this project to GitHub
+
+# Initialize git repository (if not already done)
+git init
+
+# Add your GitHub repository as remote origin
+git remote add origin https://github.com/Rakeshxofficial/Marketbot.git
+
+# Add all files to staging
+git add .
+
+# Commit with descriptive message
+git commit -m "Complete AI Crypto Assistant Bot with cross-chain swap, live notifications, and multi-wallet system"
+
+# Push to GitHub
+git push -u origin main
+
+# If you encounter authentication issues, you may need to:
+# 1. Set up a Personal Access Token in GitHub
+# 2. Use: git remote set-url origin https://YOUR_USERNAME:YOUR_TOKEN@github.com/Rakeshxofficial/Marketbot.git
