@@ -2,7 +2,7 @@ services:
   - type: web
     name: telegram-crypto-bot
     env: python
-    buildCommand: pip install --upgrade pip && pip install -r render_requirements.txt
+    buildCommand: pip install --upgrade pip && pip install -r render_minimal_requirements.txt
     startCommand: python start_production.py
     plan: starter
     healthCheckPath: /
